@@ -10,5 +10,23 @@ pipeline {
             }
         }
 
+        stage('Test') {
+            steps {
+                sh 'mvn test'
+            }
+        }
+
+    }
+
+    post {
+
+        success {
+            echo 'Build completed successfully'
+        }
+
+        failure {
+            echo 'Build failed'
+        }
+
     }
 }
