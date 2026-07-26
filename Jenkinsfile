@@ -1,12 +1,11 @@
 pipeline {
-
     agent any
 
     stages {
 
-        stage('Build') {
+        stage('Compile') {
             steps {
-                sh 'mvn clean package'
+                sh 'mvn clean compile'
             }
         }
 
@@ -16,17 +15,20 @@ pipeline {
             }
         }
 
+        stage('Package') {
+            steps {
+                sh 'mvn package'
+            }
+        }
     }
 
     post {
-
         success {
-            echo 'Build completed successfully'
+            echo 'Build Successful'
         }
 
         failure {
-            echo 'Build failed'
+            echo 'Build Failed'
         }
-
     }
 }
