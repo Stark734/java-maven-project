@@ -1,13 +1,13 @@
 package com.stark;
 
-/**
- * Hello world!
- *
- */
-public class App 
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
+public class App {
+
+    public static void main(String[] args) throws Exception {
+
+        System.out.println("Java Application Started");
+
+        while (true) {
+            Thread.sleep(10000);
+        }
     }
 }
