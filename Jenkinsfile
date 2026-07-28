@@ -1,4 +1,5 @@
 pipeline {
+
     agent any
 
     stages {
@@ -9,27 +10,33 @@ pipeline {
             }
         }
 
+
         stage('Test') {
             steps {
                 sh 'mvn test'
             }
         }
 
+
         stage('Package') {
             steps {
                 sh 'mvn package'
-		archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+                archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
             }
         }
+
     }
 
+
     post {
+
         success {
-            echo 'Build Successful'
+            echo 'Build and Test Successful'
         }
 
         failure {
             echo 'Build Failed'
         }
+
     }
 }
